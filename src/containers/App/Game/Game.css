@@ -1,0 +1,14 @@
+.Game {
+  position: relative;
+  margin: auto;
+  background: burlywood;
+  width: 450px;
+  height: 450px;
+  box-shadow: 10px 10px 5px black;
+}
+
+.Line {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
