@@ -1,7 +1,5 @@
 class Check {
   // TODO: WALL Function
-  // TODO: WORKS but repeats same loop twice
-
   constructor(grid, sX, sY, turn) {
     this.grid = grid;
     this.sX = sX;
@@ -27,8 +25,8 @@ class Check {
       const cHt = { ...ht };
       if (
         this.grid[mX][mY] === this.turn &&
-        mX * 10 + mY != prev //&&
-        //!(mX * 10 + mY in this.last)
+        mX * 10 + mY != prev &&
+        this.last[x * 10 + y] !== mX * 10 + mY
       ) {
         if (mX * 10 + mY in cHt) {
           this.fill(cHt, mX * 10 + mY, x * 10 + y);
@@ -41,6 +39,9 @@ class Check {
   }
 
   fill(ht, trig, last) {
+    //Add value to last object
+    this.last[trig] = last;
+
     //Usefull Var
     const nHt = {};
     let full = true;
