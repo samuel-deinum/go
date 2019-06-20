@@ -35,7 +35,8 @@ class Game extends Component {
     if (mGrid[mX][mY] === 0) {
       mGrid[mX][mY] = mTurn;
       let check = new Check(mGrid, mX, mY, mTurn);
-      console.log(check.grid);
+      check.calc();
+      mGrid = check.grid;
       mTurn = mTurn === 1 ? -1 : 1;
       this.setState({ grid: mGrid, turn: mTurn });
     }
