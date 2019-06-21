@@ -1,4 +1,5 @@
 class Check {
+  //TODO: CHECK TOTAL OF CAPTURED AREA
   constructor(grid, sX, sY, turn) {
     this.grid = grid.map(arr => {
       return arr.slice();
@@ -264,7 +265,7 @@ class Check {
 //FOR TESTING
 // const grid = [
 //   [0, 0, 0, 0, 0, 0, 0, -1, 1],
-//   [0, 0, 0, 0, 0, 0, -1, 1, 1],
+//   [0, 0, 0, 0, 0, 0, -1, 0, 1],
 //   [0, 0, 0, 0, 0, -1, 1, 1, -1],
 //   [0, 0, 0, 0, 0, -1, -1, -1, 0],
 //   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -274,7 +275,7 @@ class Check {
 //   [0, 0, 0, 0, 0, 0, 0, 0, 0]
 // ];
 
-// let check = new Check(grid, 0, 7, -1);
+// let check = new Check(grid, 1, 7, 1);
 // const res = check.calc();
 // console.log(res);
 

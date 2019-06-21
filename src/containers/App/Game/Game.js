@@ -5,6 +5,9 @@ import Check from "./check";
 import wood from "../../../assets/images/wood.jpg";
 
 class Game extends Component {
+  //TODOs
+  //ADD POINTS DISPLAY
+  //UPDATE DESIGN
   state = {
     grid: [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -18,7 +21,8 @@ class Game extends Component {
       [0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     turn: 1,
-    focus: { x: -1, y: -1 }
+    focus: { x: -1, y: -1 },
+    points: { "1": 0, "-1": 0 }
   };
 
   focusHandler = (mX, mY) => {
@@ -30,15 +34,23 @@ class Game extends Component {
   };
 
   selectHandler = (mX, mY) => {
+    //Copy Values
     let mGrid = [...this.state.grid];
     let mTurn = this.state.turn;
+    let mPoints = { ...this.state.points };
+
     if (mGrid[mX][mY] === 0) {
-      mGrid[mX][mY] = mTurn;
+      //Creat Check Class and launch Calculation
       let check = new Check(mGrid, mX, mY, mTurn);
-      check.calc();
-      mGrid = check.grid;
-      mTurn = mTurn === 1 ? -1 : 1;
-      this.setState({ grid: mGrid, turn: mTurn });
+      const res = check.calc();
+
+      //Process Results
+      if (!res.selfCap) {
+        mPoints[mTurn] = mPoints[mTurn] + res.points;
+        mGrid = res.grid;
+        mTurn = mTurn === 1 ? -1 : 1;
+      }
+      this.setState({ grid: mGrid, turn: mTurn, points: mPoints });
     }
   };
 
